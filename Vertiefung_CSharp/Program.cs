@@ -1,7 +1,35 @@
-﻿namespace Vertiefung_CSharp
+﻿using System.Text;
+
+namespace Vertiefung_CSharp
 {
     internal class Program
     {
+        static public bool IsPalindrom(string s)
+        {
+            s = s.ToLower();
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            string reversedString = new string(charArray);
+            return s.Equals(reversedString);
+
+        }
+        static public bool IsPalindrom(string s,bool b1)
+        {
+            StringBuilder SBuild = new StringBuilder();
+            if (b1 = true) 
+            {
+                for (int i = 0; i < s.Length; i++)
+                {
+                    if (s[i]==' ') { s=s.Remove(i,1); }
+                }
+            }
+            s = s.ToLower();
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            string reversedString = new string(charArray);
+            return s.Equals(reversedString);
+
+        }
         static public void AnalyseString(string s)
         {
             int vokaleZähl = 0;
@@ -37,6 +65,8 @@
         {
             Console.WriteLine(CountCharString("abccccccd", 'c'));
             AnalyseString("Hallo, über die Himmel 238491##ß");
+            Console.WriteLine(IsPalindrom("Otto")+" "+IsPalindrom("Maxiii"));
+            Console.WriteLine(IsPalindrom("Dreh mal am Herd",true));
         }
     }
 }
