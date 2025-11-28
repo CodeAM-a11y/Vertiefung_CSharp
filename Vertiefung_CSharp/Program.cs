@@ -4,6 +4,24 @@ namespace Vertiefung_CSharp
 {
     internal class Program
     {
+        static public bool ContainsDuplicateChars(string s)
+        {
+            bool bReturn = false;
+
+            s = s.ToLower();
+            string suchen = "";
+            for(int i = 0; i < s.Length; i++)
+            {
+                suchen=suchen.Insert(i, Convert.ToString(s[i]));
+                s=s.Remove(i, 1);
+                foreach(char ch in suchen)
+                {
+                    if (s.Contains(ch)) { bReturn = true; }
+                }
+            }
+
+            return bReturn;
+        }
         static public bool IsPalindrom(string s)
         {
             s = s.ToLower();
@@ -54,6 +72,8 @@ namespace Vertiefung_CSharp
         }
         static public int CountCharString(string s,char c)
         {
+            s = s.ToLower();
+            c = char.ToLower(c);
             int zähler=0;
             foreach(char x in s)
             {
@@ -67,6 +87,8 @@ namespace Vertiefung_CSharp
             AnalyseString("Hallo, über die Himmel 238491##ß");
             Console.WriteLine(IsPalindrom("Otto")+" "+IsPalindrom("Maxiii"));
             Console.WriteLine(IsPalindrom("Dreh mal am Herd",true));
+            Console.WriteLine(ContainsDuplicateChars("Otto"));
+            Console.WriteLine(ContainsDuplicateChars("Micha"));
         }
     }
 }
